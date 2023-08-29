@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>> Update Post</h1>
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="title">Title :</label>
+            <input type="text" id="title" class="form-control" formControlName="title" [(ngModel)]="post.title">
+            <div *ngIf="f['title'].touched && f['title'].invalid" class="alert alert-danger">
+                <div *ngIf="f['title'].errors && f['title'].errors['required']">Title required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="body">Body :</label>
+            <textarea id="body" class="form-control" formControlName="body" [(ngModel)]="post.body"> </textarea>
+        <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
+            <div *ngIf="f['body'].errors && f['body'].errors['required']">body required</div>
+        </div>
+    </div>
+    <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Update</button>
+</form>
+</div>
+
